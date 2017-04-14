@@ -68,3 +68,18 @@ function findOddNames(list) {
 
   return returnOdd
 }
+//https://www.codewars.com/kata/coding-meetup-number-14-higher-order-functions-series-order-the-food/train/javascript
+// Order the food
+function orderFood(list){
+  var count = {}
+  var getMeals = list.map(function(x){
+  return x.meal
+ })
+ console.log('meal: ', getMeals)
+
+ var countMeals = getMeals.forEach(function(y){
+   count[y] = (count[y]||0) + 1;
+
+ })
+ return count
+}
