@@ -55,7 +55,7 @@ var availablePrices = _.compose( join(', '), format, available_cars)
 
 var sorted = _.sortBy(function(car){ return car.horsepower });
 var fastest = _.last();  
-var result = function(car){return car.name + ' is the fastest'};
+var result = function(theFastCar){return theFastCar.name + ' is the fastest'};
 var fastestCar = _.compose(result, fastest, sorted)
 
 module.exports = { CARS: CARS,
