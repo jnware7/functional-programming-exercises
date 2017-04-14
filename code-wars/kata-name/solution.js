@@ -31,6 +31,16 @@ find_average = a => {return a.reduce((b,c) => {return b + c})/a.length}
 
 _if = (bool, func1, func2) => { return bool == true ? func1 : func2 }
 
+//https://www.codewars.com/kata/coding-meetup-number-14-higher-order-functions-series-order-the-food/train/javascript
+// Order the food
+
+orderFood = (list) => {
+ var count = {}
+ var getMeals = list.map(x => {return x.meal})
+ var countMeals = getMeals.forEach(y => {count[y] = (count[y]||0) + 1})
+ return count
+}
+
 //https://www.codewars.com/kata/coding-meetup-number-15-higher-order-functions-series-find-the-odd-names/train/javascript
 //Coding Meetup #15 - Higher-Order Functions Series - Find the odd names
 
