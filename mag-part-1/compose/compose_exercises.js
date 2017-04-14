@@ -1,7 +1,7 @@
 require('../support');
 var _ = require('ramda');
 var accounting = require('accounting');
-  
+
 // Example Data
 var CARS = [
     {name: "Ferrari FF", horsepower: 660, dollar_value: 700000, in_stock: true},
@@ -29,7 +29,7 @@ var nameOfFirstCar = _.compose(_.prop('name'), _.head());
 // Use the helper function _average to refactor averageDollarValue as a composition
 
 var _average = function(xs) { return reduce(add, 0, xs) / xs.length; }; // <- leave be
-var averageDollarValue = _.compose(_average, map(function(c) { return c.dollar_value }));
+var averageDollarValue = _.compose(_average, map(function(c) { return c.dollar_value; }));
 
 // Exercise 4:
 // ============
@@ -38,8 +38,6 @@ var averageDollarValue = _.compose(_average, map(function(c) { return c.dollar_v
 
 var _underscore = replace(/\W+/g, '_'); //<-- leave this alone and use to sanitize
 var sanitizeNames = _.map(_.compose(_underscore, _.toLower, _.prop('name')))
-
-// var sanitizeNames = _.compose();
 
 // Bonus 1:
 // ============
@@ -58,6 +56,7 @@ var fastest = _.last();
 var result = function(theFastCar){return theFastCar.name + ' is the fastest'};
 var fastestCar = _.compose(result, fastest, sorted)
 
+console.log(fastestCar(CARS))
 module.exports = { CARS: CARS,
                    isLastInStock: isLastInStock,
                    nameOfFirstCar: nameOfFirstCar,
