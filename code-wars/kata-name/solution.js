@@ -1,85 +1,58 @@
-// Solution for Functional Programming
-//https://www.codewars.com/kata/dollars-and-cents/train/javascript
+// Solution code for the Functional Programming
+// https://www.codewars.com/kata/search/javascript?q=&tags=Functional+Programming&beta=false
 
-//dollars-and-cents
-const formatMoney = amount=>{
-  const dollarSign = '$'
-  const fixed = amount.toFixed(2)
-  const newMoney = fixed => {return dollarSign.concat(fixed)}
-  return newMoney(fixed)
+//Dollars and Cents level 8
+//https://www.codewars.com/kata/dollars-and-cents
+
+formatMoney = amount => {
+ let theFixed = amount.toFixed(2)
+ let string = theFixed => {return theFixed.toString()}
+ let dollars = string => {return "$" + string}
+ return dollars(theFixed)
 }
-//https://www.codewars.com/kata/functional-addition/train/javascript
-//Functional Addition
-add = n => {
- return n2 => {
-   return n+ n2
- }
-}
+
+//Functional Additon level 7
+//https://www.codewars.com/kata/functional-addition/
+
+add = n => {return f => {return n + f}}
+
+//Curry Function Multiple All
 //https://www.codewars.com/kata/currying-functions-multiply-all-elements-in-an-array/train/javascript
-//Currying functions: multiply all elements in an array
-function multiplyAll(arr){
-  return function(num){
-    return arr.map(function(element){
-        return num * element
-    })
-  }
-}
-//https://www.codewars.com/kata/coding-meetup-number-15-higher-order-functions-series-find-the-odd-names/train/javascript
-//Coding Meetup #15 - Higher-Order Functions Series - Find the odd names
-function findOddNames(list) {
-  var getName = list.map(function(x){
-    return x.firstName
-  })
-  var char = function(string){
-    return string.charCodeAt(0)
-  }
-    var char2 = function(string){
-    return string.charCodeAt(1)
-  }
-    var char3 = function(string){
-    return string.charCodeAt(2)
-  }
-  var nameValue = function(name) {
-    return char(name) + char2(name) + char3(name)
-  }
 
-  console.log(getName)
-  console.log(nameValue('aba'))
+multiplyAll = array => {num => {return array.map(x => { return x * num})}}
 
-  var nameToNum = getName.map(function(x){
-    return nameValue(x)
-  })
+//Calculate Average
+//https://www.codewars.com/kata/calculate-average/train/javascript
 
-  console.log('nameToNum:',nameToNum)
+find_average = a => {return a.reduce((b,c) => {return b + c})/a.length}
 
-  var theOddOne;
-  var returnOdd;
-  var empty
+//The 'if' function
+//https://www.codewars.com/kata/the-if-function/train/javascript
 
-  var odd = function(nameValue){
-    if(nameValue % 2 == 1){
-      theOddOne = nameToNum.indexOf(nameValue)
-    } else empty = []
-  }
+_if = (bool, func1, func2) => { return bool == true ? func1 : func2 }
 
-  nameToNum.map(x => {return odd(x)})
-
-  returnOdd = theOddOne === undefined ? empty : [list[theOddOne]]
-
-  return returnOdd
-}
 //https://www.codewars.com/kata/coding-meetup-number-14-higher-order-functions-series-order-the-food/train/javascript
 // Order the food
-function orderFood(list){
-  var count = {}
-  var getMeals = list.map(function(x){
-  return x.meal
- })
- console.log('meal: ', getMeals)
 
- var countMeals = getMeals.forEach(function(y){
-   count[y] = (count[y]||0) + 1;
-
- })
+orderFood = (list) => {
+ var count = {}
+ var getMeals = list.map(x => {return x.meal})
+ var countMeals = getMeals.forEach(y => {count[y] = (count[y]||0) + 1})
  return count
+}
+
+//https://www.codewars.com/kata/coding-meetup-number-15-higher-order-functions-series-find-the-odd-names/train/javascript
+//Coding Meetup #15 - Higher-Order Functions Series - Find the odd names
+
+findOddNames = (list) => {
+  getName = list.map(x => {return x.firstName})
+  char = string => {return string.charCodeAt(0)}
+  char2 = string => {return string.charCodeAt(1)}
+  char3 = string => {return string.charCodeAt(2)}
+  nameValue = name => {return char(name) + char2(name) + char3(name)}
+  nameToNum = getName.map(x => {return nameValue(x)})
+  let theOddOne, empty;
+  odd = nameValue => {nameValue % 2 == 1 ? theOddOne = nameToNum.indexOf(nameValue) : empty = []
+  nameToNum.map(x => {return odd(x)})
+  return theOddOne === undefined ? empty : [list[theOddOne]]
 }
